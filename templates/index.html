@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Gender Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Flower Gender Prediction</h1>
+    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" id="uploadForm">
+        <input type="file" name="file" id="fileInput" required onchange="previewImage(event)">
+        <input type="submit" value="Upload">
+    </form>
+
+    <div id="imageContainer" style="display: flex; justify-content: center; margin-top: 20px;">
+        <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 300px;">
+    </div>
+
+    <div class="result" style="text-align: center; margin-top: 20px;">
+        {% if file_path %}
+            <img src="{{ url_for('uploaded_file', filename=file_path.split('/')[-1]) }}" alt="Uploaded Image" style="max-width: 300px; margin-bottom: 10px;">
+            <h2>Prediction Result:</h2>
+            <p class="prediction">Predicted Gender: {{ class_label }}</p>
+            <p>Confidence: {{ confidence }}%</p>
+        {% else %}
+            <h2>Prediction Result:</h2>
+            <p class="prediction">No image uploaded yet.</p>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
