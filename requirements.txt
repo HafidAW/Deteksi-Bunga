@@ -117,6 +117,7 @@ six
 sniffio
 soupsieve
 stack-data
+streamlit
 tensorboard
 tensorboard-data-server
 tensorflow
