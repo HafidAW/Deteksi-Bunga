@@ -4,7 +4,6 @@ import os
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
-import streamlit as st
 
 app = Flask(__name__)
 
